@@ -1,5 +1,5 @@
 #!/bin/bash
-USER=username
+USER=$1
 TEAM=teamname
 # Uncomment the following lines only when you are running this script the first time.
 #apt-get update
