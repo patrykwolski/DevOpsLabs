@@ -1,0 +1,19 @@
+/labs/roles/nginx/files/default.conf
+
+server {
+  listen 80;
+  server_name remote_machine_name;
+  location / {
+    root /usr/share/nginx/html;
+    index index.html;
+  }
+}
+
+/labs/roles/nginx/files/index.html
+
+<html>
+  <body>
+    <h1>Ansible training </h1>
+    <p> Your first role is ready to use!</p>
+  </body>
+</html>
