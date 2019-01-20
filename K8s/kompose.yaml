@@ -1,0 +1,20 @@
+version: "2"
+services:
+  redis-master:
+    image: gcr.io/google\_containers/redis:e2e
+    ports:
+      - "6379"
+
+  redis-slave:
+    image: gcr.io/google\_samples/gb-redisslave:v1
+    ports:
+      - "6379"
+    environment:
+      - GET\_HOSTS\_FROM=dns
+      
+  frontend:
+    image: gcr.io/google-samples/gb-frontend:v4
+    ports:
+      - "80:80"
+    environment:
+      - GET\_HOSTS\_FROM=dns
