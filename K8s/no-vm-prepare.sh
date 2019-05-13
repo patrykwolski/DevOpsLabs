@@ -43,3 +43,5 @@ sudo -E minikube start --vm-driver=none
 # add minikube dashboard by running
 # sudo minikube addons enable dashboard
 # check ip of minikube dashboard "kubectl get svc -n kube-system kubernetes-dashboard"
+# create tunnel to minikube dashboard service
+# ssh -L 9000:$KUBERNETES_DASHBOARD_CLUSTER_IP:80
