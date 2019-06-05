@@ -2,6 +2,6 @@
   tasks:
   - name: ensure that mysql-server is installed on localhost
     apt:
-      name: mysq-server
+      name: mysql-server
       state: present
     become: true
