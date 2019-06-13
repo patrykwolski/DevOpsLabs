@@ -1,0 +1,18 @@
+
+default.conf.j2 -> /etc/nginx/conf.d/USER.conf
+server {
+  listen 80;
+  server_name USER_DOMAIN
+  location / {
+    root /usr/share/nginx/html;
+    index USER-index.html;
+  }
+}
+
+index.html.j2 -> /usr/share/nginx/html/USER-index.html
+
+<html>
+  <body>
+    <h1>Welcome on USER environment </h1>
+  </body>
+</html>
