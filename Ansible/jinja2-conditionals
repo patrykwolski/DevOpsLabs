@@ -1,0 +1,31 @@
+default.conf.j2 -> /etc/nginx/conf.d/default.conf
+
+<html>
+  <body>
+    <h1>Welcome on development environment </h1>
+  </body>
+</html>
+<html>
+  <body>
+    <h1>Welcome on production environment </h1>
+  </body>
+</html>
+
+index.html.j2 -> /usr/share/nginx/html/index.html
+
+server {
+  listen 80;
+  server_name develop;
+  location / {
+    root /usr/share/nginx/html;
+    index index.html;
+  }
+}
+server {
+  listen 80;
+  server_name production;
+  location / {
+    root /usr/share/nginx/html;
+    index index.html;
+  }
+}
