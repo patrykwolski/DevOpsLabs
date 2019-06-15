@@ -1,5 +1,5 @@
-
 default.conf.j2 -> /etc/nginx/conf.d/USER.conf
+
 server {
   listen 80;
   server_name USER_DOMAIN
