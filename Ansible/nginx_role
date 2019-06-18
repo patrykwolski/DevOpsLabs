@@ -17,3 +17,13 @@ server {
     <p> Your first role is ready to use!</p>
   </body>
 </html>
+
+
+2. Write a role that will install nginx and will configure default website provided by www server.
+ 
+     2.1 Common role ( will be run as a dependency of nginx role) that will create devops group and admin user (with ssh key generation - 2048) 
+     2.2 Install a web server. In this case, we will use 'Nginx' as it is a lightweight web server
+     2.3 Manage configuration for the Nginx web server
+     2.4 Start the web server after installing it (in OS)
+     2.5 Copy default.conf and  file, which will be served as a home page 
+     2.6 Restart nginx service using handler after index.html file change
