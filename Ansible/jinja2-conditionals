@@ -1,4 +1,4 @@
-default.conf.j2 -> /etc/nginx/conf.d/default.conf
+index.html.j2 -> /usr/share/nginx/html/index.html
 
 <html>
   <body>
@@ -11,7 +11,7 @@ default.conf.j2 -> /etc/nginx/conf.d/default.conf
   </body>
 </html>
 
-index.html.j2 -> /usr/share/nginx/html/index.html
+default.conf.j2 -> /etc/nginx/conf.d/default.conf
 
 server {
   listen 80;
