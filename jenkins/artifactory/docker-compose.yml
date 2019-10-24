@@ -50,3 +50,6 @@ services:
       nofile:
         soft: 32000
         hard: 40000
+volumes:
+  jenkins_home:
+    external: true
