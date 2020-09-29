@@ -1,7 +1,7 @@
 /labs/roles/nginx/files/default.conf -> /etc/nginx/conf.d/default.conf
 server {
   listen 80;
-  server_name remote_machine_name;
+  server_name remote-host;
   location / {
     root /usr/share/nginx/html;
     index index.html;
