@@ -1,9 +1,9 @@
 #!/bin/bash
 USER=$1
 TEAM=teamname
-# Uncomment the following lines only when you are running this script the first time.
-apt-get update
-apt-get install -y openssl
+# Uncomment the following lines only when openssl is not available at you os.
+#apt-get update
+#apt-get install -y openssl
 mkdir certs
 cd certs
 
