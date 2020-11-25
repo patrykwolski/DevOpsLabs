@@ -24,6 +24,8 @@ spec:
     metadata:
       labels:
         app: nginx
+      annotations:
+        timestamp: {{ now | quote }}       
     spec:
       containers:
       - name: nginx
