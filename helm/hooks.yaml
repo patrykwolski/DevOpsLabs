@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pre-install
+  labels:
+    name: pre-install
+spec:
+  containers:
+  - name: pre-install
+    image: ubuntu
+    command: ["/bin/bash", "-c", "sleep 60 && echo pre-install hook is done" ]
+  restartPolicy: Never
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pre-delete
+  labels:
+    name: pre-delete
+spec:
+  containers:
+  - name: pre-delete
+    image: ubuntu
+    command: ["/bin/bash", "-c", "sleep 60 && echo pre-delete hook is done" ]
+  restartPolicy: Never
