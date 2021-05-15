@@ -1,0 +1,48 @@
+1. key pairs:
+- will use generate instance-key-$YOUR_NICK key pair that will be generated based on id_rsa.pub with file function (for keys generation use ssh-keygen command)
+
+2. securitygroup:
+- will create allow-web-ssh-$YOUR_NICK security group
+- will be attached to vpc-ad5087c7 vpc
+- will allow for ingress traffic for port 22 and 80 from any ip address
+- will allow for any egress traffic 
+
+3. input variables:
+- instance_type (prod: t2.micro dev: t2.nano)
+- instance_ami (prod/dev: ami-0a4f7079eb2559d2d)
+
+4. ec2 instance:
+- will create test-instance
+- ami and instance type will be defined by instance_ami and instance_type variables
+- will be attached to allow-web-ssh security group (reference)
+- init script will by injected by file function
+- instance will use instance-key ssh key (reference)
+
+5. init scripts:
+
+dev/install-web-server.sh
+#!/bin/bash
+export DEBIAN_FRONTEND=noninteractive
+apt update
+apt install apache2 -y
+echo "<h1>Apache configured by Terraform!</h1>" > /var/www/html/index.html
+
+###
+
+prod/install-web-server.sh
+#!/bin/bash
+export DEBIAN_FRONTEND=noninteractive
+apt update
+apt install nginx -y
+echo "<h1>Nginx configured by Terraform!</h1>" > /var/www/html/index.nginx-debian.
+
+6. elb:
+- will create elb-$YOUR_NICK loadbalancer
+- will be available in eu-central-1a, eu-central-1b, eu-central-1c availability zones
+- will listen listen at port 80 and will redirect traffic to port 80 of the ec2 instance
+- as a target healtcheck use "HTTP:80/"
+- attach elb to test-instance (reference)
+
+7. output values:
+- elb-dns-name
+- ec2-public-ip
