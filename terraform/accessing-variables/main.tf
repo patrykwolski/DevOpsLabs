@@ -12,7 +12,7 @@ resource "aws_instance" "test-instance" {
     volume_type           = "gp2"
   }
   tags = {
-    Name = "test-server"
+    Name = "$YOUR_NICK"
     env = "test-env"
   }
 }
