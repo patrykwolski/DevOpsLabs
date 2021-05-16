@@ -1,5 +1,5 @@
 resource "aws_instance" "test-instance" {
-  ami                    = "ami-00f69856ea957jgjf"
+  ami                    = "ami-0a4f7079eb2559d2d"
   instance_type          = "t2.nano"
   availability_zone      = "eu-central-1a"
   subnet_id              = "subnet-45e01539"
