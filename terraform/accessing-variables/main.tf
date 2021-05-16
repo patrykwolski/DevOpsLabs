@@ -1,7 +1,7 @@
 resource "aws_instance" "test-instance" {
   ami                    = "ami-0a4f7079eb2559d2d"
   instance_type          = "t2.nano"
-  availability_zone      = "eu-central-1a"
+  availability_zone      = "eu-central-1b"
   subnet_id              = "subnet-45e01539"
   vpc_security_group_ids = ["sg-082d44eee7e8087ad","sg-aea68bc8"]
   associate_public_ip_address = true
