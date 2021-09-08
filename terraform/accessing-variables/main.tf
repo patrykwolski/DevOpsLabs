@@ -3,7 +3,7 @@ resource "aws_instance" "test-instance" {
   instance_type          = "t2.nano"
   availability_zone      = "eu-central-1b"
   subnet_id              = "subnet-45e01539"
-  vpc_security_group_ids = ["sg-082d44eee7e8087ad","sg-aea68bc8"]
+  vpc_security_group_ids = ["sg-aea68bc8"]
   associate_public_ip_address = true
   root_block_device {
     delete_on_termination = true
