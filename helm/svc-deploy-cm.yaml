@@ -25,11 +25,11 @@ spec:
       labels:
         app: nginx
       annotations:
-        timestamp: {{ now | quote }}       
+        timestamp: {{ now }}       
     spec:
       containers:
       - name: nginx
-        image: nginx
+        image: nginx:stable
         ports:
         - containerPort: 80
         volumeMounts:
