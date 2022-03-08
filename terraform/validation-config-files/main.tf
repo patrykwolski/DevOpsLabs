@@ -4,7 +4,7 @@ variable "instance_count" {
 }
 
 resource "aws_instaance" "test-instance!" {
-  ami           = "ami-0a4f7079eb2559d2d"
+  ami           = "ami-0612e041366af94b2"
   instance_type = t2.micro
   count         = var.instance_count
   log_level     = "debug"
