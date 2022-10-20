@@ -1,4 +1,4 @@
-/labs/roles/nginx/files/default.conf -> /etc/nginx/conf.d/default.conf
+#/labs/roles/nginx/files/default.conf -> /etc/nginx/conf.d/default.conf
 server {
   listen 80;
   server_name remote-host;
@@ -8,7 +8,7 @@ server {
   }
 }
 
-/labs/roles/nginx/files/index.html -> /usr/share/nginx/html/index.html
+#/labs/roles/nginx/files/index.html -> /usr/share/nginx/html/index.html
  
 
 <html>
@@ -25,5 +25,5 @@ server {
      2.2 Install a web server. In this case, we will use 'Nginx' as it is a lightweight web server
      2.3 Manage configuration for the Nginx web server
      2.4 Start the web server after installing it (in OS)
-     2.5 Copy default.conf and  file, which will be served as a home page 
-     2.6 Restart nginx service using handler after index.html file change
+     2.5 Copy default.conf and index.html files to remote-host, they will be served as a www server home page 
+     2.6 Restart nginx service using handler after default.conf or index.html file change
