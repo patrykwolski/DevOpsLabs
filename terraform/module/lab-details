@@ -9,7 +9,7 @@
 
 3. input variables:
 - instance_type (prod: t2.micro dev: t2.nano)
-- instance_ami (prod/dev: ami-080badb0bf6503aee)
+- instance_ami (prod/dev: ami-05a301bd95d56bcd9)
 
 4. ec2 instance:
 - will create test-instance
