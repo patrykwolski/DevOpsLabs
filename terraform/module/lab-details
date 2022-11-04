@@ -25,7 +25,7 @@ dev/install-web-server.sh
 export DEBIAN_FRONTEND=noninteractive
 apt update
 apt install apache2 -y
-echo "<h1>Apache configured by Terraform!</h1>" > /var/www/html/index.html
+#echo "<h1>Apache configured by Terraform!</h1>" > /var/www/html/index.html
 
 ###
 
@@ -34,7 +34,7 @@ prod/install-web-server.sh
 export DEBIAN_FRONTEND=noninteractive
 apt update
 apt install nginx -y
-echo "<h1>Nginx configured by Terraform!</h1>" > /var/www/html/index.nginx-debian.
+#echo "<h1>Nginx configured by Terraform!</h1>" > /var/www/html/index.nginx-debian.
 
 6. elb:
 - will create elb-$YOUR_NICK loadbalancer
