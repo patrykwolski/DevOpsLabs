@@ -1,4 +1,4 @@
-resource "azurerm_linux_virtual_machine" "main" {
+resource "azurerm_linux_virtual_machine" "$NICK-vm1" {
   name                            = "$NICK-vm1"
   resource_group_name             = azurerm_resource_group.main.name
   location                        = azurerm_resource_group.main.location
@@ -23,7 +23,7 @@ resource "azurerm_linux_virtual_machine" "main" {
   }
 
   
-  resource "azurerm_linux_virtual_machine" "main" {
+  resource "azurerm_linux_virtual_machine" "$NICK-vm2" {
   name                            = "$NICK-vm2"
   resource_group_name             = azurerm_resource_group.main.name
   location                        = azurerm_resource_group.main.location
@@ -48,7 +48,7 @@ resource "azurerm_linux_virtual_machine" "main" {
   }
 
     
-resource "azurerm_linux_virtual_machine" "main" {
+resource "azurerm_linux_virtual_machine" "$NICK-vm3" {
   name                            = "$NICK-vm3"
   resource_group_name             = azurerm_resource_group.main.name
   location                        = azurerm_resource_group.main.location
