@@ -1,0 +1,42 @@
+# Recreate the cluster
+minikube delete
+minikube start --driver=none
+# Deploy Cilium
+helm repo add cilium https://helm.cilium.io/
+helm install cilium cilium/cilium --namespace kube-system --version 1.14.1 --set operator.replicas=1 --set containerRuntime.integration=auto
+
+# Check state of Cilium pods (all should be in running state)
+kubectl get pods -n kube-system
+# NAME                               READY   STATUS    RESTARTS   AGE
+# cilium-operator-fc796cdd8-srnrn    1/1     Running   0          4m41s
+# cilium-rzc8n                       1/1     Running   0          4m41s
+
+# Create a cilium-test Namespace and execute connectivity tests
+kubectl create ns cilium-test
+kubectl apply -n cilium-test -f https://raw.githubusercontent.com/cilium/cilium/1.14.1/examples/kubernetes/connectivity-check/connectivity-check.yaml
+kubectl get pods -n cilium-test
+# NAME                                                     READY   STATUS    RESTARTS   AGE
+# echo-a-6575c98b7d-ljrcx                                  1/1     Running   0          16m
+# echo-b-54b86d8976-wjzjm                                  1/1     Running   0          16m
+# echo-b-host-54d5cc5fcd-zdbvh                             1/1     Running   0          16m
+# host-to-b-multi-node-clusterip-846b574bbc-vvc8c          0/1     Pending   0          16m
+# host-to-b-multi-node-headless-5b4bf5459f-7bhml           0/1     Pending   0          16m
+# pod-to-a-6578dd7fbf-vqw6c                                1/1     Running   0          16m
+# pod-to-a-allowed-cnp-57fd79848c-m6mph                    1/1     Running   0          16m
+# pod-to-a-denied-cnp-d984d7757-bxsrs                      1/1     Running   0          16m
+# pod-to-b-intra-node-nodeport-6654886dc9-674h9            1/1     Running   0          16m
+# pod-to-b-multi-node-clusterip-54847b87b9-jnw62           0/1     Pending   0          16m
+# pod-to-b-multi-node-headless-64b4d78855-2g86k            0/1     Pending   0          16m
+# pod-to-b-multi-node-nodeport-64757f6d5f-fxdfc            0/1     Pending   0          16m
+# pod-to-external-1111-76c448d975-88t2j                    1/1     Running   0          16m
+# pod-to-external-fqdn-allow-google-cnp-56c545c6b9-bvzx5   1/1     Running   0          16m
+
+# In the case of minikube some Pods will be in Pending state because of the single node cluster deployment.
+
+# Delete cilium-test Namespace
+kubectl delete namespace cilium-test
+
+# Create nginx Service and Deployment, check connectivity bettween busybox Pod and nginx Pod available behind nginx Service.
+kubectl create deployment nginx --image=nginx
+kubectl expose deployment nginx --port=80
+kubectl run busybox --rm -ti --image=busybox --restart=Never -- wget --timeout=1 -S nginx

@@ -1,4 +1,5 @@
 #!/bin/bash
+# Remember to execute this script with sudo
 USER=$1
 TEAM=teamname
 # Uncomment the following lines only when openssl is not available at you os.
