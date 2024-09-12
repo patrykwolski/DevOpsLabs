@@ -1,5 +1,6 @@
 # Recreate the cluster
 minikube delete
+sudo sysctl fs.protected_regular=0
 minikube start --driver=none
 # Deploy Cilium
 helm repo add cilium https://helm.cilium.io/
