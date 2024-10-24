@@ -1,12 +1,14 @@
 # Recreate the cluster
 minikube delete
 
-# Correct permissions for /opt/cni/bin that are overwritten by the Docker
+# Correct permissions for /opt/cni/bin that are overwritten by the Docker and cleanup after flanneld deployment
 sudo chmod -R 755 /opt/cni/bin
 sudo chown root /opt/cni/bin
+sudo sysctl fs.protected_regular=0
+sudo ip link delete cni0
+sudo ip link delete flannel.1
 
 # Deploy Cilium
-sudo sysctl fs.protected_regular=0
 minikube start --driver=none --cni=cilium
 
 # Check state of Cilium pods (all should be in running state)
