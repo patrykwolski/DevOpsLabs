@@ -1,4 +1,4 @@
-# Recreate the cluster
+# Delete the cluster
 minikube delete
 
 # Correct permissions for /opt/cni/bin that are overwritten by the Docker and cleanup after flanneld deployment
